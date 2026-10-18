@@ -1,0 +1,48 @@
+services:
+  mongo:
+    image: mongo:7
+    container_name: ter-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build: ./backend
+    container_name: ter-backend
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    environment:
+      PORT: 5000
+      NODE_ENV: development
+      MONGO_URI: mongodb://mongo:27017/tech-explainer-reels
+      JWT_SECRET: ${JWT_SECRET:-replace_this_with_a_long_random_secret}
+      JWT_EXPIRES_IN: 7d
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-your_gemini_api_key_here}
+      CLIENT_URL: http://localhost:5173
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@techreels.com}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-Admin@12345}
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+  frontend:
+    build: ./frontend
+    container_name: ter-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    environment:
+      VITE_BACKEND_URL: http://backend:5000
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+volumes:
+  mongo-data:

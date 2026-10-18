@@ -1,0 +1,21 @@
+{
+  "name": "tech-explainer-reels",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Tech Explainer Reels - AI Powered Learning Platform (monorepo root)",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "setup:env": "node scripts/setup-env.js",
+    "seed": "npm run seed --workspace=backend",
+    "dev:backend": "npm run dev --workspace=backend",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "dev": "concurrently -n BACKEND,FRONTEND -c blue,green \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "build:frontend": "npm run build --workspace=frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
