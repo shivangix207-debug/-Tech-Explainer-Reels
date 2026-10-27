@@ -1,0 +1,47 @@
+{
+ "js-closures": {
+  "duration": 60
+ },
+ "html-css-box-model": {
+  "duration": 60
+ },
+ "react-components-props-state": {
+  "duration": 60
+ },
+ "rest-api-basics": {
+  "duration": 60
+ },
+ "node-express-request-lifecycle": {
+  "duration": 60
+ },
+ "mongodb-schema-design": {
+  "duration": 60
+ },
+ "sql-select-join-group": {
+  "duration": 60
+ },
+ "jwt-authentication": {
+  "duration": 60
+ },
+ "git-github-workflow": {
+  "duration": 60
+ },
+ "big-o-data-structures": {
+  "duration": 60
+ },
+ "processes-vs-threads": {
+  "duration": 60
+ },
+ "tcp-vs-udp": {
+  "duration": 60
+ },
+ "sql-injection-xss": {
+  "duration": 60
+ },
+ "cloud-iaas-paas-saas": {
+  "duration": 60
+ },
+ "how-llms-work": {
+  "duration": 60
+ }
+}
