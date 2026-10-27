@@ -12,7 +12,7 @@ import AIChatbot from "../components/AIChatbot";
 import AINotes from "../components/AINotes";
 import AIQuiz from "../components/AIQuiz";
 import CommentSection from "../components/CommentSection";
-
+import { mediaUrl } from "../services/api";
 const SPEEDS = [0.5, 1, 1.25, 1.5, 2];
 
 const ReelPlayer = ({ reel, active, muted, onEnded, registerVideoRef, speed }) => {
@@ -84,17 +84,19 @@ const ReelPlayer = ({ reel, active, muted, onEnded, registerVideoRef, speed }) =
 
   return (
     <div className="relative h-[100dvh] w-full snap-start snap-always shrink-0 bg-black flex items-center justify-center overflow-hidden" onClick={handleTap}>
-      <video
-        ref={videoRef}
-        src={reel.videoUrl}
-        poster={reel.thumbnailUrl}
-        muted={muted}
-        playsInline
-        loop={false}
-        onEnded={onEnded}
-        onError={() => setBroken(true)}
-        className="h-full w-full object-contain"
-      />
+      
+<video
+  ref={videoRef}
+  src={mediaUrl(reel.videoUrl)}
+  poster={mediaUrl(reel.thumbnailUrl)}
+  muted={muted}
+  playsInline
+  loop={false}
+  onEnded={onEnded}
+  onError={() => setBroken(true)}
+  className="h-full w-full object-contain"
+/>
+
       {broken && (
         <div className="absolute inset-0 flex items-center justify-center bg-black/80 text-white text-sm text-center p-6">
           This video file is missing or can't be played in your browser.

@@ -1,9 +1,14 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: `${BACKEND_URL}/api`,
   headers: { "Content-Type": "application/json" },
 });
+
+export const BACKEND_URL = "https://tech-explainer-reels.onrender.com";
+
+export const mediaUrl = (url) =>
+  url && !url.startsWith("http") ? `${BACKEND_URL}${url}` : url;
 
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("ter_token");

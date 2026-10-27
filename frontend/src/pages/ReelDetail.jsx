@@ -12,6 +12,7 @@ import AIQuiz from "../components/AIQuiz";
 import CommentSection from "../components/CommentSection";
 import VideoPlayer from "../components/VideoPlayer";
 import StatusBadge from "../components/StatusBadge";
+import { mediaUrl } from "../services/api";
 
 const tabs = [
   { id: "chat", label: "AI Tutor", icon: Bot },
@@ -157,15 +158,17 @@ const ReelDetail = () => {
               ? { aspectRatio: "9 / 16", width: "min(100%, calc(78vh * 9 / 16))" }  // portrait reel: show it whole, never cropped
               : { aspectRatio: "16 / 9", width: "100%" }}
           >
-            <VideoPlayer
-              ref={videoRef}
-              src={reel.videoUrl}
-              poster={reel.thumbnailUrl}
-              onTimeUpdate={handleTimeUpdate}
-              onPause={saveProgress}
-              onEnded={saveProgress}
-              onLoadedMetadata={handleLoadedMetadata}
-            />
+            
+<VideoPlayer
+  ref={videoRef}
+  src={mediaUrl(reel.videoUrl)}
+  poster={mediaUrl(reel.thumbnailUrl)}
+  onTimeUpdate={handleTimeUpdate}
+  onPause={saveProgress}
+  onEnded={saveProgress}
+  onLoadedMetadata={handleLoadedMetadata}
+/>
+
             <div className="absolute top-3 right-3">
               <button
                 onClick={() => setSpeedOpen((o) => !o)}
