@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background-color: #F7F7FB;
+  color: #1A1A2E;
+}
+html.dark body {
+  background-color: #0B0B12;
+  color: #ECECF6;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.4);
+  border-radius: 999px;
+}
+
+/* Visible focus states throughout, instead of relying on browser default outline only */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #7C3AED;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-subtle transition hover:bg-brand-700 hover:shadow-medium active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-accent-500 px-5 py-2.5 text-sm font-semibold text-white shadow-subtle transition hover:bg-accent-600 hover:shadow-medium active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-surface-border dark:border-surface-border-dark px-5 py-2.5 text-sm font-semibold text-ink-light dark:text-ink-dark transition hover:bg-surface-light dark:hover:bg-surface-card-dark active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-sm font-medium text-ink-light/70 dark:text-ink-dark/70 transition hover:bg-black/5 dark:hover:bg-white/10;
+  }
+  .card {
+    @apply rounded-2xl border border-surface-border dark:border-surface-border-dark bg-surface-card dark:bg-surface-card-dark shadow-subtle transition-shadow;
+  }
+  .card-elevated {
+    @apply rounded-2xl border border-surface-border dark:border-surface-border-dark bg-surface-card dark:bg-surface-card-dark shadow-medium;
+  }
+  .input {
+    @apply w-full rounded-xl border border-surface-border dark:border-surface-border-dark bg-surface-card dark:bg-surface-card-dark px-4 py-2.5 text-sm outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20;
+  }
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+  .badge-accent {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold bg-accent-500/15 text-accent-600 dark:text-accent-400;
+  }
+  .badge-gold {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold bg-gold-400/20 text-gold-500;
+  }
+  .skeleton {
+    @apply relative overflow-hidden bg-surface-border/60 dark:bg-surface-border-dark/60 rounded-lg;
+    background-image: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+    background-size: 400px 100%;
+    background-repeat: no-repeat;
+    animation: shimmer 1.6s ease-in-out infinite;
+  }
+  .gradient-hero {
+    background: radial-gradient(60% 100% at 15% 0%, rgba(139,92,246,0.20) 0%, transparent 60%),
+      radial-gradient(50% 80% at 100% 20%, rgba(34,211,238,0.12) 0%, transparent 60%);
+  }
+  .stagger-item {
+    animation: staggerIn 0.5s cubic-bezier(0.16,1,0.3,1) both;
+  }
+}
+
+/* hide the scrollbar on the reel feed (it still scrolls) */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
