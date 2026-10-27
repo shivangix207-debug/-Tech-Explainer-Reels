@@ -63,7 +63,7 @@ const Signup = () => {
             <form onSubmit={goToStep2} className="mt-6 space-y-4">
               <div>
                 <label className="text-sm font-medium mb-1 block">Full name</label>
-                <input required className="input" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Shivangi Sharma" />
+                <input required className="input" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Alex Johnson" />
               </div>
               <div>
                 <label className="text-sm font-medium mb-1 block">Email</label>
